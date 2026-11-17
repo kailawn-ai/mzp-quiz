@@ -1,0 +1,32 @@
+{
+  "name": "mzp-quiz",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline-first live quiz competition system",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "postinstall": "npm rebuild better-sqlite3",
+    "dev": "concurrently -k -n server,web -c blue,green \"npm run dev --workspace @mzp-quiz/server\" \"npm run dev --workspace @mzp-quiz/web\"",
+    "dev:server": "npm run dev --workspace @mzp-quiz/server",
+    "dev:web": "npm run dev --workspace @mzp-quiz/web",
+    "db:migrate": "npm run db:migrate --workspace @mzp-quiz/server",
+    "db:backup": "npm run db:migrate --workspace @mzp-quiz/server -- backup",
+    "db:restore": "npm run db:migrate --workspace @mzp-quiz/server -- restore",
+    "build": "npm run build --workspace @mzp-quiz/shared && npm run build --workspace @mzp-quiz/server && npm run build --workspace @mzp-quiz/web",
+    "test": "npm run test --workspace @mzp-quiz/server && npm run test --workspace @mzp-quiz/web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true,
+    "electron@33.4.11": true,
+    "esbuild@0.28.2": true
+  }
+}

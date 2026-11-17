@@ -1,0 +1,155 @@
+{
+  "appId": "com.mzp.quiz",
+  "productName": "MZP Quiz",
+  "compression": "store",
+  "copyright": "Copyright © 2024 MZP Quiz",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "build/**/*",
+    "package.json"
+  ],
+  "extraResources": [
+    {
+      "from": "../web/dist",
+      "to": "web/dist",
+      "filter": ["**/*"]
+    },
+    {
+      "from": "../server/dist",
+      "to": "server/dist",
+      "filter": ["**/*"]
+    },
+    {
+      "from": "../../node_modules",
+      "to": "server/node_modules",
+      "filter": [
+        "@fastify/**/*",
+        "@pinojs/**/*",
+        "abstract-logging/**/*",
+        "ajv/**/*",
+        "ajv-formats/**/*",
+        "atomic-sleep/**/*",
+        "avvio/**/*",
+        "base64-js/**/*",
+        "better-sqlite3/**/*",
+        "bindings/**/*",
+        "bl/**/*",
+        "buffer/**/*",
+        "chownr/**/*",
+        "cookie/**/*",
+        "decompress-response/**/*",
+        "deep-extend/**/*",
+        "dequal/**/*",
+        "detect-libc/**/*",
+        "end-of-stream/**/*",
+        "expand-template/**/*",
+        "fast-decode-uri-component/**/*",
+        "fast-deep-equal/**/*",
+        "fast-json-stable-stringify/**/*",
+        "fast-json-stringify/**/*",
+        "fast-querystring/**/*",
+        "fast-uri/**/*",
+        "fastify/**/*",
+        "fastify-plugin/**/*",
+        "fastq/**/*",
+        "file-uri-to-path/**/*",
+        "find-my-way/**/*",
+        "fs-constants/**/*",
+        "github-from-package/**/*",
+        "ieee754/**/*",
+        "inherits/**/*",
+        "ini/**/*",
+        "ipaddr.js/**/*",
+        "json-schema-ref-resolver/**/*",
+        "json-schema-traverse/**/*",
+        "light-my-request/**/*",
+        "mimic-response/**/*",
+        "minimist/**/*",
+        "mkdirp-classic/**/*",
+        "napi-build-utils/**/*",
+        "node-abi/**/*",
+        "on-exit-leak-free/**/*",
+        "once/**/*",
+        "pino/**/*",
+        "pino-abstract-transport/**/*",
+        "pino-std-serializers/**/*",
+        "prebuild-install/**/*",
+        "process-warning/**/*",
+        "pump/**/*",
+        "punycode/**/*",
+        "quick-format-unescaped/**/*",
+        "rc/**/*",
+        "readable-stream/**/*",
+        "real-require/**/*",
+        "ret/**/*",
+        "reusify/**/*",
+        "rfdc/**/*",
+        "safe-buffer/**/*",
+        "safe-regex2/**/*",
+        "safe-stable-stringify/**/*",
+        "secure-json-parse/**/*",
+        "semver/**/*",
+        "set-cookie-parser/**/*",
+        "simple-concat/**/*",
+        "simple-get/**/*",
+        "sonic-boom/**/*",
+        "split2/**/*",
+        "string_decoder/**/*",
+        "strip-json-comments/**/*",
+        "tar-fs/**/*",
+        "tar-stream/**/*",
+        "thread-stream/**/*",
+        "toad-cache/**/*",
+        "tunnel-agent/**/*",
+        "undici-types/**/*",
+        "uri-js/**/*",
+        "util-deprecate/**/*",
+        "wrappy/**/*",
+        "zod/**/*",
+        "!**/node_modules/*/{test,tests,__tests__}/**",
+        "!**/node_modules/*/{*.md,*.map,.github,.gitignore,.npmignore}",
+        "!**/node_modules/*/example*",
+        "!**/node_modules/*/examples/**"
+      ]
+    },
+    {
+      "from": "../../packages/shared",
+      "to": "server/node_modules/@mzp-quiz/shared",
+      "filter": ["dist/**/*", "package.json"]
+    }
+  ],
+  "win": {
+    "signAndEditExecutable": false,
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      },
+      {
+        "target": "portable",
+        "arch": ["x64"]
+      }
+    ],
+    "requestedExecutionLevel": "asInvoker",
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "allowElevation": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "MZP Quiz",
+    "uninstallDisplayName": "MZP Quiz",
+    "artifactName": "${productName}-Setup-${version}.${ext}"
+  },
+  "portable": {
+    "artifactName": "${productName}-${version}-Portable.${ext}"
+  },
+  "publish": {
+    "provider": "generic",
+    "url": "https://example.com/downloads"
+  }
+}

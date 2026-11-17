@@ -1,0 +1,28 @@
+{
+  "name": "@mzp-quiz/electron",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MZP Quiz - Offline-first live quiz competition system",
+  "author": "MZP Quiz",
+  "type": "module",
+  "main": "build/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "npm run build && electron .",
+    "dev": "NODE_ENV=development npm run build && electron .",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:win:portable": "npm run build && electron-builder --win portable"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.15.30",
+    "electron": "33.4.11",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.2"
+  }
+}
